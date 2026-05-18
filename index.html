@@ -31,25 +31,47 @@ body{
 /* BACKGROUND */
 
 body::before{
+
     content:"";
+
     position:fixed;
+
     inset:0;
 
     background:
-    radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,255,255,.06), transparent 30%),
-    linear-gradient(180deg,#050505,#0a0a0a);
 
-    z-index:-3;
+    linear-gradient(
+        180deg,
+        #030303 0%,
+        #0b0b0b 50%,
+        #070707 100%
+    );
+
+    z-index:-4;
+
 }
 
 body::after{
+
     content:"";
+
     position:fixed;
+
     inset:0;
-    background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    opacity:.10;
-    z-index:-2;
+
+    background-image:
+
+    radial-gradient(
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+    );
+
+    background-size:4px 4px;
+
+    opacity:.18;
+
+    z-index:-3;
+
 }
 
 /* GLOW */
@@ -112,13 +134,14 @@ body::after{
     width:100%;
     max-width:1100px;
     background:#050505;
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(212,175,55,.14);
     backdrop-filter:blur(24px);
     border-radius:30px;
     padding:clamp(14px,2vw,26px);
     box-shadow:
     0 0 60px rgba(0,0,0,.35),
     inset 0 0 0 1px rgba(255,255,255,.03);
+    
 }
 
 /* TEXT */
@@ -430,7 +453,45 @@ input{
 
     margin-inline:auto;
 
-    
+}
+
+.ambient{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    opacity:.55;
+
+}
+
+.ambient-1{
+
+    width:420px;
+    height:420px;
+
+    background:rgba(212,175,55,.08);
+
+    top:-120px;
+    left:-100px;
+
+}
+
+.ambient-2{
+
+    width:340px;
+    height:340px;
+
+    background:rgba(255,255,255,.035);
+
+    bottom:-100px;
+    right:-80px;
 
 }
 
@@ -492,14 +553,14 @@ input{
 
 }
 
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="glow" id="glow"></div>
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
 
 <div class="wrapper">
 
@@ -545,9 +606,26 @@ input{
         <div class="grid">
 
             <div class="card">
+
+        <div class="location-top">
+
+            <div>
                 <small>Horario</small>
                 <strong>21:00 hs</strong>
             </div>
+
+            <a
+            class="map-btn"
+            href="evento.ics"
+            download>
+
+                Agendar →
+
+            </a>
+
+        </div>
+
+    </div>
 
             <div class="card location-card">
 
@@ -663,7 +741,7 @@ input{
                 <input
                 type="text"
                 id="nombre"
-                placeholder="Escribí tu nombre">
+                placeholder="Escribí tu nombre completo">
             </div>
 
             <div class="form-group">
