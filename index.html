@@ -977,30 +977,22 @@ document.addEventListener("mousemove",(e)=>{
 
 function startExperience(){
 
+    nextPage(2);
+
     const music =
     document.getElementById("bg-music");
 
-    music.volume = 0.35;
+    if(music){
 
-    const playPromise = music.play();
+        music.volume = 0.35;
 
-    if(playPromise !== undefined){
+        setTimeout(()=>{
 
-        playPromise
-        .then(() => {
+            music.play().catch((e)=>{
+                console.log("Audio bloqueado", e);
+            });
 
-            nextPage(2);
-
-        })
-        .catch(() => {
-
-            nextPage(2);
-
-        });
-
-    }else{
-
-        nextPage(2);
+        },100);
 
     }
 
@@ -1012,9 +1004,10 @@ function startExperience(){
 id="bg-music"
 loop
 playsinline
-webkit-playsinline>
+webkit-playsinline
+preload="auto">
 
-    <source src="audio40.mp3" type="audio/mpeg">
+    <source src="2audio40.mp3" type="audio/mpeg">
 
 </audio>
 
