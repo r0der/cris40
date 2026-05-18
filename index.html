@@ -998,6 +998,21 @@ function startExperience(){
 
 }
 
+    document.addEventListener(
+"visibilitychange",
+() => {
+
+    const music =
+    document.getElementById("bg-music");
+
+    if(document.hidden){
+
+        music.pause();
+
+    }
+
+});
+
 </script>
 
 <audio
